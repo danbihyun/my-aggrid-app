@@ -19,7 +19,13 @@ function App() {
     }));
 
     return [
-      { headerName: "도시", field: "도시", pinned: "left" },
+      {
+        headerName: "도시",
+        field: "도시",
+        pinned: "left",
+        lockPinned: true,
+        cellStyle: { fontWeight: "bold", backgroundColor: "#f9f9f9" }
+      },
       ...months,
       {
         headerName: "합계",
@@ -32,7 +38,7 @@ function App() {
           }
           return sum;
         },
-        cellStyle: { fontWeight: "bold", backgroundColor: "#f0f8ff" },
+        cellStyle: { fontWeight: "bold", backgroundColor: "#f0f8ff" }
       },
     ];
   }, []);
@@ -47,14 +53,59 @@ function App() {
   // ✅ 50개 도시 + 임의 강우량 데이터 생성
   const rowData = useMemo(() => {
     const cities = [
-      "서울", "뉴욕", "런던", "파리", "도쿄", "베를린", "시드니", "케이프타운", "리우데자네이루", "모스크바",
-      "방콕", "델리", "베이징", "토론토", "로마", "이스탄불", "멕시코시티", "마드리드", "두바이", "싱가포르",
-      "홍콩", "자카르타", "카이로", "부에노스아이레스", "나이로비", "암스테르담", "헬싱키", "오슬로", "스톡홀름", "코펜하겐",
-      "프라하", "부다페스트", "바르샤바", "리마", "보고타", "카라치", "테헤란", "하노이", "마닐라", "카트만두",
-      "헝가리", "베오그라드", "키예프", "타슈켄트", "알마티", "울란바토르", "호놀룰루", "샌프란시스코", "밴쿠버", "멜버른"
+      "서울",
+      "뉴욕",
+      "런던",
+      "파리",
+      "도쿄",
+      "베를린",
+      "시드니",
+      "케이프타운",
+      "리우데자네이루",
+      "모스크바",
+      "방콕",
+      "델리",
+      "베이징",
+      "토론토",
+      "로마",
+      "이스탄불",
+      "멕시코시티",
+      "마드리드",
+      "두바이",
+      "싱가포르",
+      "홍콩",
+      "자카르타",
+      "카이로",
+      "부에노스아이레스",
+      "나이로비",
+      "암스테르담",
+      "헬싱키",
+      "오슬로",
+      "스톡홀름",
+      "코펜하겐",
+      "프라하",
+      "부다페스트",
+      "바르샤바",
+      "리마",
+      "보고타",
+      "카라치",
+      "테헤란",
+      "하노이",
+      "마닐라",
+      "카트만두",
+      "헝가리",
+      "베오그라드",
+      "키예프",
+      "타슈켄트",
+      "알마티",
+      "울란바토르",
+      "호놀룰루",
+      "샌프란시스코",
+      "밴쿠버",
+      "멜버른",
     ];
 
-    return cities.map(city => {
+    return cities.map((city) => {
       const monthly = {};
       for (let i = 1; i <= 12; i++) {
         monthly[`${i}월`] = Math.floor(Math.random() * 300); // 0~300mm
@@ -97,7 +148,9 @@ function App() {
 
   return (
     <div style={{ width: "100%", height: "100vh" }}>
-      <h1 style={{ textAlign: "center" }}>🌧️ 도시별 월별 강우량 데이터 (AG Grid v34)</h1>
+      <h1 style={{ textAlign: "center" }}>
+        🌧️ 도시별 월별 강우량 데이터 (AG Grid v34)
+      </h1>
       <div
         className="ag-theme-alpine"
         style={{ height: 600, width: "90%", margin: "0 auto" }}
